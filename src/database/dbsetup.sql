@@ -51,6 +51,7 @@ update transactions set post_date = STR_TO_DATE(LPAD(post_date_string, 8, 0), '%
 -- select count(*) from transactions where transaction_datetime is NULL or post_date is null;
 alter table transactions modify column transaction_datetime date NOT NULL;
 alter table transactions drop column transaction_datetime_string, drop column post_date_string;
+alter table transactions add column transaction_state VARCHAR(2);
 -- describe transactions;
 -- select * from transactions;
 
@@ -64,6 +65,19 @@ commit;
 
 
 
--- detected frauds according to rule 1
+-- detected frauds according to rule 2
 -- customer transactions that occurred in a different state 
 -- from the customers’ primary state.
+create table mismatch_state_frauds (
+    first_name                      VARCHAR(20) NOT NULL, 
+    last_name                       VARCHAR(20), 
+    account_number                  INT(5) NOT NULL, 
+    transaction_number              INT(5) NOT NULL, 
+    expected_transaction_location   VARCHAR(2) NOT NULL, 
+    actual_transaction_location     VARCHAR(2) NOT NULL,
+    PRIMARY KEY(account_number, transaction_number),
+    FOREIGN KEY(account_number) REFERENCES account_info(account_number),
+    FOREIGN KEY(account_number, transaction_number) REFERENCES transactions(account_number, transaction_number)
+);
+
+commit;

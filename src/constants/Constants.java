@@ -6,22 +6,22 @@ import src.services.RuleService;
 public class Constants {
     public enum RULE {
         RULE_1(x->RuleService.applyRule1(), ""),
-        RULE_2(x->RuleService.applyRule2(), "");
+        RULE_2(x->RuleService.applyRule2(x), "mismatch_state_frauds");
 
-        private Consumer<Void> rule;
-        private String outputSchema;
+        private Consumer<String> rule;
+        private String table_name;
 
-        RULE(Consumer<Void> rule, String outputSchema){
+        RULE(Consumer<String> rule, String table_name){
             this.rule = rule;
-            this.outputSchema = outputSchema;
+            this.table_name = table_name;
         }
 
         public void applyRule(){
-            this.rule.accept(null);
+            this.rule.accept(this.table_name);
         }
 
-        public String getOutputSchema() {
-            return outputSchema;
+        public String getTableName() {
+            return table_name;
         }
 
         public String getName() {

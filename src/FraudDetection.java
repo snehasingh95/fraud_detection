@@ -1,6 +1,8 @@
 package src;
 import java.util.*;
 
+import com.mysql.cj.util.StringUtils;
+
 import src.constants.Constants.RULE;
 import src.database.DBConnection;
 import src.services.*;
@@ -17,6 +19,7 @@ public class FraudDetection {
         connectToDatabase();
         verifyDatabase();
 
+        clearTables();
         applyRules();
         printFrauds();
 
@@ -57,6 +60,21 @@ public class FraudDetection {
         }
     }
 
+    private static void clearTables() {
+        for(RULE r:RULE.values()){
+            if(!StringUtils.isEmptyOrWhitespaceOnly(r.getTableName())){
+                String query = "delete from "+r.getTableName();
+                try{
+                    Statement stmt = connection.createStatement();
+                    stmt.executeUpdate(query);
+                    // System.out.println(r.getTableName()+" cleared");
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+    }
+
     private static void applyRules() {
         System.out.println("\nStarting Fraud Detection...");
         for(RULE r:RULE.values()){
@@ -68,8 +86,8 @@ public class FraudDetection {
         System.out.println("\nPrinting Fraud Transactions...");   
         for(RULE r:RULE.values()){
             System.out.println("\n############################ Fraud Transactions according to " + r.getName() + " ############################");
-            UtilsService.exportTableToFile(r.getOutputSchema()+".csv", r.getOutputSchema());
-            UtilsService.printTableToScreen(r.getOutputSchema());
+            UtilsService.exportTableToFile(r.getTableName()+".csv", r.getTableName());
+            UtilsService.printTableToScreen(r.getTableName());
         }
     }
 }

@@ -1,7 +1,13 @@
-package code.services;
+package src.services;
+
+import java.sql.*;
+
+import src.database.DBConnection;
 
 public class UtilsService {
-    // ############################ Utility functions ############################
+    
+    private static Connection connection = DBConnection.getInstance().getConnection();
+
     public static void exportTableToFile(String filename, String schema){
 
     }

@@ -1,6 +1,7 @@
-package code.constants;
+package src.constants;
 import java.util.function.Consumer;
-import code.services.RuleService;
+
+import src.services.RuleService;
 
 public class Constants {
     public enum RULE {

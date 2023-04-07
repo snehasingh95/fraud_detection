@@ -1,0 +1,87 @@
+
+####################################################################################################
+
+Connected to Database
+Passed Database Verification
+
+Starting Fraud Detection...
+
+############################## Fraud Transactions according to RULE_1 ##############################
+File: output/abnormal_amount_frauds.csv
+Customer Name: Michael Smith; Account Number: 11111; Transaction Number: 15; Merchant Number: 90282822; Merchant Description: KROGER #2 4000 POLK    HOUSTON; Transaction Amount: 2300.0; 
+Customer Name: Michael Smith; Account Number: 11111; Transaction Number: 26; Merchant Number: 4.45E+12; Merchant Description: COSMO BLEU             HOUSTON; Transaction Amount: 276.52; 
+Customer Name: Albares Cammy; Account Number: 14829; Transaction Number: 26; Merchant Number: 1VKWOGBF44BU45L; Merchant Description: DOORDASH*7-ELEVEN      SAN FRANCISCO; Transaction Amount: 10.2; 
+Customer Name: Albares Cammy; Account Number: 14829; Transaction Number: 30; Merchant Number: 1VKWOGBF44BU45L; Merchant Description: DOORDASH*RAOS          SAN FRANCISCO; Transaction Amount: 50.07; 
+Customer Name: Gibes Cory; Account Number: 17538; Transaction Number: 4; Merchant Number: 8027784068; Merchant Description: AMC SCC CHOICES CAFE   ALBANY; Transaction Amount: 1.37; 
+Customer Name: Wieser Sage; Account Number: 18054; Transaction Number: 27; Merchant Number: 8.44E+11; Merchant Description: TXTAG 888 468 9824     8884689824; Transaction Amount: 100.0; 
+Customer Name: Wieser Sage; Account Number: 18054; Transaction Number: 30; Merchant Number: 2.95E+13; Merchant Description: BIRYANI POT            HOUSTON; Transaction Amount: 65.0; 
+Customer Name: Vocelka Francine; Account Number: 20759; Transaction Number: 27; Merchant Number: 4.69E+14; Merchant Description: CENTRAL MARKET #747    DALLAS; Transaction Amount: 75.06; 
+Customer Name: Vocelka Francine; Account Number: 20759; Transaction Number: 58; Merchant Number: 4.45E+12; Merchant Description: TST* BOB S STEAK & CHO DALLAS; Transaction Amount: 387.34; 
+Customer Name: Vocelka Francine; Account Number: 20759; Transaction Number: 77; Merchant Number: 4.45E+12; Merchant Description: CVS/PHARMACY #11065    DALLAS; Transaction Amount: 299.39; 
+Customer Name: John Doe; Account Number: 22222; Transaction Number: 10; Merchant Number: 4.45E+12; Merchant Description: Best Buy		New York; Transaction Amount: 10000.0; 
+Customer Name: Tollner Mitsue; Account Number: 25643; Transaction Number: 4; Merchant Number: 4.45E+12; Merchant Description: TST* DESSERT GALLERY B CHICAGO; Transaction Amount: 40.5; 
+Customer Name: Tollner Mitsue; Account Number: 25643; Transaction Number: 35; Merchant Number: 5.39E+13; Merchant Description: SQ *BLACK HOLE COFFEE  Chicago; Transaction Amount: 11.74; 
+Customer Name: Klonowski Karl; Account Number: 25770; Transaction Number: 30; Merchant Number: 7.20E+13; Merchant Description: CHARLESTON S 60        MESA; Transaction Amount: 246.65; 
+Customer Name: Whobrey Yuki; Account Number: 26607; Transaction Number: 30; Merchant Number: 8.00E+14; Merchant Description: PEET'S #04403          NEWPORT BEACH; Transaction Amount: 5.45; 
+Customer Name: Whobrey Yuki; Account Number: 26607; Transaction Number: 47; Merchant Number: 8.00E+14; Merchant Description: CITY OF LAGUNA BEACH I LAGUNA BEACH; Transaction Amount: 2.75; 
+Customer Name: Sawchuk Nelida; Account Number: 28064; Transaction Number: 4; Merchant Number: 3.90E+11; Merchant Description: USA*FIVE STAR FOOD VEN KNOXVILLE; Transaction Amount: 3.7; 
+Customer Name: Amigon Minna; Account Number: 28226; Transaction Number: 43; Merchant Number: 1VKWOGBF44BU45L; Merchant Description: DOORDASH DASHPASS      SAN FRANCISCO; Transaction Amount: 9.99; 
+Customer Name: Amigon Minna; Account Number: 28226; Transaction Number: 76; Merchant Number: 1VKWOGBF44BU45L; Merchant Description: DOORDASH*DAIRY QUEEN   SAN FRANCISCO; Transaction Amount: 29.11; 
+Customer Name: Pugh Blondell; Account Number: 30808; Transaction Number: 2; Merchant Number: EFT; Merchant Description: EFT                    Santa Fe; Transaction Amount: 393.25; 
+Customer Name: Venere Art; Account Number: 31094; Transaction Number: 28; Merchant Number: 4.45E+12; Merchant Description: EL TIEMPO CANTINA WEBS WEBSTER; Transaction Amount: 95.57; 
+Customer Name: Venere Art; Account Number: 31094; Transaction Number: 36; Merchant Number: 4.45E+12; Merchant Description: TST* GEORGIA JAMES     HOUSTON; Transaction Amount: 50.22; 
+Customer Name: Venere Art; Account Number: 31094; Transaction Number: 40; Merchant Number: 8.50E+11; Merchant Description: EMPIRE CAFE            HOUSTON; Transaction Amount: 47.68; 
+Customer Name: Venere Art; Account Number: 31094; Transaction Number: 51; Merchant Number: 8.50E+11; Merchant Description: EMPIRE CAFE            HOUSTON; Transaction Amount: 39.64; 
+Customer Name: Venere Art; Account Number: 31094; Transaction Number: 53; Merchant Number: 4.45E+12; Merchant Description: TEASE COLOR & STYLE BA HOUSTON; Transaction Amount: 80.7; 
+Customer Name: Venere Art; Account Number: 31094; Transaction Number: 66; Merchant Number: 8.50E+11; Merchant Description: EMPIRE CAFE            HOUSTON; Transaction Amount: 47.39; 
+Customer Name: Garufi Meaghan; Account Number: 31452; Transaction Number: 18; Merchant Number: 4.45E+12; Merchant Description: TARGET        00014597 PEARLAND; Transaction Amount: 95.57; 
+Customer Name: Garufi Meaghan; Account Number: 31452; Transaction Number: 20; Merchant Number: 4.45E+12; Merchant Description: WM SUPERCENTER #3510   PEARLAND; Transaction Amount: 139.49; 
+Customer Name: Garufi Meaghan; Account Number: 31452; Transaction Number: 57; Merchant Number: 4.45E+12; Merchant Description: TARGET        00014597 PEARLAND; Transaction Amount: 200.21; 
+Customer Name: Rulapaugh Kati; Account Number: 31593; Transaction Number: 12; Merchant Number: 4.45E+12; Merchant Description: SPEC'S LIQUOR #186     SPRING; Transaction Amount: 111.72; 
+Customer Name: Dilliard Leota; Account Number: 32628; Transaction Number: 18; Merchant Number: 4.45E+12; Merchant Description: TST* THE PIT ROOM      HOUSTON; Transaction Amount: 34.53; 
+Customer Name: Monica Abel; Account Number: 33555; Transaction Number: 10; Merchant Number: 4.45E+12; Merchant Description: Best Buy		New York; Transaction Amount: 10000.0; 
+Customer Name: Inouye Veronika; Account Number: 33717; Transaction Number: 55; Merchant Number: 4.45E+12; Merchant Description: TST* NOMAD - POLARIS   COLUMBUS; Transaction Amount: 205.89; 
+Customer Name: Inouye Veronika; Account Number: 33717; Transaction Number: 108; Merchant Number: 8.79E+12; Merchant Description: JIMMY JOHNS - 426      EASTON; Transaction Amount: 8.41; 
+Customer Name: Ruta Graciela; Account Number: 33945; Transaction Number: 12; Merchant Number: 7.20E+14; Merchant Description: SHOPRITE PARAMUS S1    PARAMUS; Transaction Amount: 12.64; 
+Customer Name: Maclead Abel; Account Number: 37226; Transaction Number: 57; Merchant Number: 7.20E+14; Merchant Description: PARTY CITY 948         SCOTTSDALE; Transaction Amount: 49.65; 
+Customer Name: Maclead Abel; Account Number: 37226; Transaction Number: 62; Merchant Number: 7.20E+14; Merchant Description: SAKS O5 SCOTTSDALE 844 SCOTTSDALE; Transaction Amount: 86.43; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 3; Merchant Number: 6.94E+14; Merchant Description: TRADER JOE'S #427 QPS  HOUSTON; Transaction Amount: 24.72; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 6; Merchant Number: 5.39E+13; Merchant Description: SQ *BLACK HOLE COFFEE  Houston; Transaction Amount: 19.13; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 8; Merchant Number: 8.50E+11; Merchant Description: EMPIRE CAFE            HOUSTON; Transaction Amount: 37.15; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 29; Merchant Number: 5.35E+14; Merchant Description: DUO COFFEE & PILATES   HOUSTON; Transaction Amount: 10.72; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 32; Merchant Number: 5.35E+14; Merchant Description: THAI SPICE RESTAURANT  HOUSTON; Transaction Amount: 42.65; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 73; Merchant Number: 8.50E+11; Merchant Description: EMPIRE CAFE            HOUSTON; Transaction Amount: 4.19; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 95; Merchant Number: 5.39E+13; Merchant Description: SQ *BLACK HOLE COFFEE  Houston; Transaction Amount: 19.57; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 150; Merchant Number: 8.50E+11; Merchant Description: EMPIRE CAFE            HOUSTON; Transaction Amount: 40.42; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 172; Merchant Number: 5.39E+13; Merchant Description: SQ *TOUT SUITE - EADO  Houston; Transaction Amount: 20.8; 
+Customer Name: Foller Donette; Account Number: 37466; Transaction Number: 175; Merchant Number: 5.39E+13; Merchant Description: SQ *TOUT SUITE - EADO  Houston; Transaction Amount: 20.8; 
+Customer Name: Morasca Simona; Account Number: 38829; Transaction Number: 70; Merchant Number: 2.25E+11; Merchant Description: CHAPULTEPEC LUPITA     HOUSTON; Transaction Amount: 11.5; 
+Customer Name: Morasca Simona; Account Number: 38829; Transaction Number: 88; Merchant Number: 2.25E+11; Merchant Description: CHAPULTEPEC LUPITA     HOUSTON; Transaction Amount: 11.5; 
+Customer Name: Morasca Simona; Account Number: 38829; Transaction Number: 104; Merchant Number: 2.25E+11; Merchant Description: CHAPULTEPEC LUPITA     HOUSTON; Transaction Amount: 11.5; 
+Customer Name: Morasca Simona; Account Number: 38829; Transaction Number: 125; Merchant Number: 2.25E+11; Merchant Description: CHAPULTEPEC LUPITA     HOUSTON; Transaction Amount: 11.0; 
+Customer Name: Morasca Simona; Account Number: 38829; Transaction Number: 141; Merchant Number: 2.25E+11; Merchant Description: CHAPULTEPEC LUPITA     HOUSTON; Transaction Amount: 11.5; 
+Customer Name: Joseph Dark; Account Number: 43991; Transaction Number: 26; Merchant Number: 4.45E+12; Merchant Description: COSMO BLEU             BRIGHTON; Transaction Amount: 276.52; 
+Customer Name: Artie Venn; Account Number: 44891; Transaction Number: 10; Merchant Number: 4.45E+12; Merchant Description: Best Buy		New York; Transaction Amount: 10000.0; 
+Customer Name: Don Fuller; Account Number: 53111; Transaction Number: 26; Merchant Number: 4.45E+12; Merchant Description: COSMO BLEU             Hamilton; Transaction Amount: 276.52; 
+Customer Name: Mirasca Sam; Account Number: 53222; Transaction Number: 9; Merchant Number: 4.45E+12; Merchant Description: CKE*EL CHARRO MEXICA 3 Ashland; Transaction Amount: 13.0; 
+Customer Name: Mirasca Sam; Account Number: 53222; Transaction Number: 10; Merchant Number: 4.45E+12; Merchant Description: Kohls		Ashland; Transaction Amount: 725.51; 
+Customer Name: Anthony West; Account Number: 54891; Transaction Number: 9; Merchant Number: 4.45E+12; Merchant Description: CKE*EL CHARRO MEXICA 3 Sioux Falls; Transaction Amount: 13.0; 
+
+############################## Fraud Transactions according to RULE_2 ##############################
+File: output/mismatch_state_frauds.csv
+Customer Name: Michael Smith; Account Number: 11111; Transaction Number: 25; Expected Transaction Location: TX; Actual Transaction Location: FL; 
+Customer Name: John Doe; Account Number: 22222; Transaction Number: 10; Expected Transaction Location: CA; Actual Transaction Location: NY; 
+Customer Name: Jane Doe; Account Number: 33333; Transaction Number: 2; Expected Transaction Location: NY; Actual Transaction Location: NJ; 
+Customer Name: Monica Abel; Account Number: 33555; Transaction Number: 13; Expected Transaction Location: NY; Actual Transaction Location: CA; 
+Customer Name: Ruth Green; Account Number: 37222; Transaction Number: 1; Expected Transaction Location: OH; Actual Transaction Location: CA; 
+Customer Name: Ruth Green; Account Number: 37222; Transaction Number: 2; Expected Transaction Location: OH; Actual Transaction Location: CA; 
+Customer Name: Ruth Green; Account Number: 37222; Transaction Number: 3; Expected Transaction Location: OH; Actual Transaction Location: CA; 
+Customer Name: Ruth Green; Account Number: 37222; Transaction Number: 4; Expected Transaction Location: OH; Actual Transaction Location: CA; 
+Customer Name: Ruth Green; Account Number: 37222; Transaction Number: 5; Expected Transaction Location: OH; Actual Transaction Location: CA; 
+Customer Name: Ruth Green; Account Number: 37222; Transaction Number: 6; Expected Transaction Location: OH; Actual Transaction Location: GA; 
+Customer Name: Joseph Dark; Account Number: 43991; Transaction Number: 16; Expected Transaction Location: MI; Actual Transaction Location: NY; 
+Customer Name: Artie Venn; Account Number: 44891; Transaction Number: 10; Expected Transaction Location: NJ; Actual Transaction Location: NY; 
+Customer Name: Don Fuller; Account Number: 53111; Transaction Number: 16; Expected Transaction Location: OH; Actual Transaction Location: NY; 
+Customer Name: Anthony West; Account Number: 54891; Transaction Number: 7; Expected Transaction Location: SD; Actual Transaction Location: MD; 
+Customer Name: Anthony West; Account Number: 54891; Transaction Number: 10; Expected Transaction Location: SD; Actual Transaction Location: NY; 
+Customer Name: Anthony West; Account Number: 54891; Transaction Number: 13; Expected Transaction Location: SD; Actual Transaction Location: CA; 

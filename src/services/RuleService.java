@@ -9,22 +9,21 @@ public class RuleService {
     private static Connection connection = DBConnection.getInstance().getConnection();
 
     public static void applyRule1(){
-        System.out.println("applyRule1()");
+        System.out.println("Pending applyRule1()");
     }
 
     public static void applyRule2(String table){
-        System.out.println("Applying Rule 2");
+        // System.out.println("Applying Rule 2");
         String query = "insert into "+table+" "
                         +"select a.first_name, a.last_name, a.account_number, "
                         +"t.transaction_number, a.state, t.transaction_state "
                         +"from transactions t join account_info a "
                         +"on t.account_number=a.account_number "
                         +"where t.transaction_state <> a.state";
-        System.out.println(query);
         try{
             Statement stmt = connection.createStatement();
             int count=stmt.executeUpdate(query);
-            System.out.println(count+" frauds found");
+            // System.out.println(count+" frauds found");
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

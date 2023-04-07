@@ -9,19 +9,19 @@ public class Constants {
         RULE_2(x->RuleService.applyRule2(x), "mismatch_state_frauds");
 
         private Consumer<String> rule;
-        private String table_name;
+        private String tableName;
 
-        RULE(Consumer<String> rule, String table_name){
+        RULE(Consumer<String> rule, String tableName){
             this.rule = rule;
-            this.table_name = table_name;
+            this.tableName = tableName;
         }
 
         public void applyRule(){
-            this.rule.accept(this.table_name);
+            this.rule.accept(this.tableName);
         }
 
         public String getTableName() {
-            return table_name;
+            return tableName;
         }
 
         public String getName() {

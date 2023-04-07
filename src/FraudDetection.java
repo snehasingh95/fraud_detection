@@ -83,11 +83,13 @@ public class FraudDetection {
     }
 
     private static void printFrauds() {
-        System.out.println("\nPrinting Fraud Transactions...");   
+        // System.out.println("\nPrinting Fraud Transactions...");   
         for(RULE r:RULE.values()){
-            System.out.println("\n############################ Fraud Transactions according to " + r.getName() + " ############################");
-            UtilsService.exportTableToFile(r.getTableName()+".csv", r.getTableName());
-            UtilsService.printTableToScreen(r.getTableName());
+            if(!StringUtils.isEmptyOrWhitespaceOnly(r.getTableName())){
+                System.out.println("\n"+"#".repeat(30)+" Fraud Transactions according to " + r.getName() + " "+"#".repeat(30));
+                UtilsService.exportTableToFile(r.getTableName()+".csv", r.getTableName());
+                UtilsService.printTableToScreen(r.getTableName());
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package src;
 
 import com.mysql.cj.util.StringUtils;
 
+import src.constants.Constants;
 import src.constants.Constants.RULE;
 import src.database.DBConnection;
 import src.services.*;
@@ -12,8 +13,6 @@ public class FraudDetection {
 
     private static DBConnection dbConnection;
     private static Connection connection;
-
-    private final static String FILE_PATH = "output/";
 
     public static void main(String args[]) {
         System.out.println("\n" + "#".repeat(100));
@@ -97,7 +96,7 @@ public class FraudDetection {
                                     + " Fraud Transactions according to " + r.getName() 
                                     + " "+"#".repeat(30));
 
-                UtilsService.exportTableToCSVFile(FILE_PATH + r.getTableName()+".csv", 
+                UtilsService.exportTableToCSVFile(Constants.OUTPUT_FILE_PATH + r.getTableName()+".csv", 
                                                     r.getTableName());
                 UtilsService.printTableToScreen(r.getTableName());
             }

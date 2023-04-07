@@ -16,6 +16,24 @@ public class RuleService {
         detectAbnormalTransactions(tableName);
     }
 
+    public static void applyRule2(String tableName){
+        // System.out.println("Applying Rule 2");
+        String query = "insert into "+tableName+" "
+                        +"select concat(a.first_name, ' ', a.last_name) as customer_name, "
+                        +"t.account_number, t.transaction_number, a.state, t.transaction_state "
+                        +"from transactions t join account_info a "
+                        +"on t.account_number=a.account_number "
+                        +"where t.transaction_state <> a.state";
+        try{
+            Statement stmt = connection.createStatement();
+            int count=stmt.executeUpdate(query);
+            // System.out.println(count+" frauds found");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }
+    }
+
     private static Map<Integer, Map<String, List<Float>>> generateCustomerMerchantMap(){
         // account_number -> merchant_number -> transaction_amounts
         Map<Integer, Map<String, List<Float>>> customerMerchantMap = new HashMap<>();
@@ -80,24 +98,6 @@ public class RuleService {
                         +"on r.account_number=t.account_number and r.merchant_number = t.merchant_number "
                         +"left join account_info a on t.account_number = a.account_number "
                         +"where t.transaction_amount not between r.min_amt and r.max_amt";
-        try{
-            Statement stmt = connection.createStatement();
-            int count=stmt.executeUpdate(query);
-            // System.out.println(count+" frauds found");
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            System.out.println(e.getStackTrace());
-        }
-    }
-
-    public static void applyRule2(String tableName){
-        // System.out.println("Applying Rule 2");
-        String query = "insert into "+tableName+" "
-                        +"select concat(a.first_name, ' ', a.last_name) as customer_name, "
-                        +"t.account_number, t.transaction_number, a.state, t.transaction_state "
-                        +"from transactions t join account_info a "
-                        +"on t.account_number=a.account_number "
-                        +"where t.transaction_state <> a.state";
         try{
             Statement stmt = connection.createStatement();
             int count=stmt.executeUpdate(query);

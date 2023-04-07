@@ -3,7 +3,11 @@ import java.util.function.Consumer;
 
 import src.services.RuleService;
 
+
 public class Constants {
+    
+    public final static String OUTPUT_FILE_PATH = "output/";
+
     public enum RULE {
         RULE_1(x->RuleService.applyRule1(x), "abnormal_amount_frauds"),
         RULE_2(x->RuleService.applyRule2(x), "mismatch_state_frauds");

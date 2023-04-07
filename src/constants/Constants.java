@@ -5,7 +5,7 @@ import src.services.RuleService;
 
 public class Constants {
     public enum RULE {
-        RULE_1(x->RuleService.applyRule1(), ""),
+        RULE_1(x->RuleService.applyRule1(x), "abnormal_amount_frauds"),
         RULE_2(x->RuleService.applyRule2(x), "mismatch_state_frauds");
 
         private Consumer<String> rule;

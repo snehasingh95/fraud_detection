@@ -57,12 +57,29 @@ alter table transactions add column transaction_state VARCHAR(2);
 
 commit;
 
--- stores range for customer transactions at a merchant for fraud-detection
-
+-- stores valid range for customer transactions at various merchant
+create table transaction_range (
+    account_number      INT(5) NOT NULL, 
+    merchant_number     VARCHAR(30) NOT NULL, 
+    min_amt             FLOAT NOT NULL, 
+    max_amt             FLOAT NOT NULL,
+    PRIMARY KEY(account_number, merchant_number)
+);
 
 -- detected frauds according to rule 1
 -- abnormally high transactions in a customers’ spending.
-
+create table abnormal_amount_frauds (
+    first_name                      VARCHAR(20) NOT NULL, 
+    last_name                       VARCHAR(20), 
+    account_number                  INT(5) NOT NULL, 
+    transaction_number              INT(5) NOT NULL, 
+    merchant_number                 VARCHAR(30) NOT NULL,
+    merchant_description            VARCHAR(100),
+    transaction_amount              FLOAT NOT NULL,
+    PRIMARY KEY(account_number, transaction_number),
+    FOREIGN KEY(account_number) REFERENCES account_info(account_number),
+    FOREIGN KEY(account_number, transaction_number) REFERENCES transactions(account_number, transaction_number)
+);
 
 
 -- detected frauds according to rule 2

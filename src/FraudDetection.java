@@ -64,15 +64,20 @@ public class FraudDetection {
     private static void clearTables() {
         for(RULE r:RULE.values()){
             if(!StringUtils.isEmptyOrWhitespaceOnly(r.getTableName())){
-                String query = "delete from "+r.getTableName();
-                try{
-                    Statement stmt = connection.createStatement();
-                    stmt.executeUpdate(query);
-                    // System.out.println(r.getTableName()+" cleared");
-                }catch(Exception e){
-                    System.out.println(e.getMessage());
-                }
+                clearTable(r.getTableName());
             }
+        }
+        clearTable("transaction_range");
+    }
+
+    private static void clearTable(String tableName) {
+        String query = "delete from "+tableName;
+        try{
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+            // System.out.println(tableName+" cleared");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

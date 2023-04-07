@@ -1,8 +1,8 @@
 package src.services;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
+import java.util.*;
 
 import com.opencsv.CSVWriter;
 
@@ -22,7 +22,7 @@ public class UtilsService {
             writer.writeNext(columnNames);
             writer.writeAll(rs, false);
             writer.close();
-            System.out.println("Written to file: "+filename);
+            System.out.println("File: "+filename);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -80,4 +80,22 @@ public class UtilsService {
 
         return formatedName.toString().trim();
     }
+
+    public static float[] getIQR(List<Float> values) {
+        Collections.sort(values);
+        int len = values.size();
+        
+        float q1 = values.get(len/4);
+        float q3 = values.get((3*len)/4);
+        float iqr = q3-q1;
+
+        q1 -= 1.5*iqr;
+        q1 = Math.max(0, q1);
+        q3 += 1.5*iqr;
+
+        return new float[]{q1,q3};
+    }
+
+    
+    
 }

@@ -5,17 +5,32 @@ import java.util.*;
 
 import src.database.DBConnection;
 
+/** 
+ * Service to apply all rules for fraud detection
+ */
+
 public class RuleService {
 
     private static Connection connection = DBConnection.getInstance().getConnection();
 
+    /**
+     * Rule 1: Identify abnormally high transactions in a customers’ spending. 
+     * eg: if a customer has spending at Kroger’s Grocery Store of $55.39, $74.42, 
+     * $2300, $42.51, and $15.75, the transaction for $2300 should be flagged.
+     */
     public static void applyRule1(String tableName){
         // account_number -> merchant_number -> transaction_amounts
         Map<Integer, Map<String, List<Float>>> customerMerchantMap = generateCustomerMerchantMap();
-        generateIQR(customerMerchantMap);
+        generateIQRFence(customerMerchantMap);
         detectAbnormalTransactions(tableName);
     }
 
+    /**
+     * Rule 2: Identify customer transactions that occurred in a different state 
+     * from the customers’ primary state. 
+     * eg: if a customer’s state in the account info table is Texas, 
+     * but there is a transaction in California, the transaction should be flagged. 
+     */
     public static void applyRule2(String tableName){
         // System.out.println("Applying Rule 2");
         String query = "insert into "+tableName+" "
@@ -34,8 +49,11 @@ public class RuleService {
         }
     }
 
+    /**
+     * Internal function to return mapping:
+     * account_number -> merchant_number -> transaction_amounts
+     */
     private static Map<Integer, Map<String, List<Float>>> generateCustomerMerchantMap(){
-        // account_number -> merchant_number -> transaction_amounts
         Map<Integer, Map<String, List<Float>>> customerMerchantMap = new HashMap<>();
         String query = "select account_number, merchant_number, transaction_amount "
                         +"from transactions";
@@ -59,19 +77,25 @@ public class RuleService {
         return customerMerchantMap;
     }
 
-    private static void generateIQR(Map<Integer, Map<String, List<Float>>> customerMerchantMap) {
+    /**
+     * Internal function to generate IQR fence for account_number and merchant_number groups.
+     */
+    private static void generateIQRFence(Map<Integer, Map<String, List<Float>>> customerMerchantMap) {
         for(int accountNumber:customerMerchantMap.keySet()){
             Map<String, List<Float>> merchantTransactionMap = customerMerchantMap.get(accountNumber);
             for(String merchantNumber: merchantTransactionMap.keySet()){
                 List<Float> transactionAmounts = merchantTransactionMap.get(merchantNumber);
                 if(transactionAmounts.size()>2){
-                    float[] validRange = UtilsService.getIQR(transactionAmounts);
+                    float[] validRange = UtilsService.getIQRFence(transactionAmounts);
                     storeIQR(accountNumber, merchantNumber, validRange);
                 }
             }
         }
     }
 
+    /**
+     * Internal function to store valid range for account_number and merchant_number groups.
+     */
     private static void storeIQR(int accountNumber, String merchantNumber, float[] validRange) {
         String query = "insert into transaction_range(account_number, merchant_number, min_amt, max_amt) "
                         +"values(?,?,?,?)";
@@ -88,6 +112,9 @@ public class RuleService {
         }
     }
 
+    /**
+     * Internal function to store fraud transacctions according to rule 1
+     */
     private static void detectAbnormalTransactions(String tableName) {
         // outliers
         String query = "insert into "+tableName+" "
@@ -108,6 +135,10 @@ public class RuleService {
         }
     }
 
+    /**
+     * Utility function to extract state from merchant_description and update in database
+     * (Unused in main program)
+     */
     private static void updateState(){
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -122,6 +153,11 @@ public class RuleService {
                 int n = merchant_description.length();
                 String state = merchant_description.substring(n-2);
                 merchant_description = merchant_description.substring(0,n-2).trim();
+
+                if(state.equals("US")){
+                    state = merchant_description.substring(n-2);
+                    merchant_description = merchant_description.substring(0,n-2).trim();
+                }
 
                 rs.updateString("merchant_description", merchant_description);
                 rs.updateString("transaction_state", state);

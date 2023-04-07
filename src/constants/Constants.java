@@ -3,6 +3,9 @@ import java.util.function.Consumer;
 
 import src.services.RuleService;
 
+/**
+ * Stores all constants used in the entire project
+ */
 
 public class Constants {
     

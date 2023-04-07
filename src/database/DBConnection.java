@@ -2,6 +2,10 @@ package src.database;
 
 import java.sql.*;
 
+/**
+ * Creates a Singleton instance of DBConnection shared by all classes/services
+ */
+
 public class DBConnection {
     String url = "jdbc:mysql://localhost:3306/";
     String dbName = "customer";
@@ -15,6 +19,9 @@ public class DBConnection {
         connection = createConnection();
     }
 
+    /**
+     * Create a connection to the database
+     */
     public Connection createConnection() {
         Connection connection = null;
         try {
@@ -35,6 +42,9 @@ public class DBConnection {
         return connection;
     }
 
+    /**
+     * Shutdown existing connection to the database
+     */
     public void closeConnection() {
         try {
             this.connection.close();
@@ -44,7 +54,7 @@ public class DBConnection {
     }
 
     /**
-     * Create a static method to get instance.
+     * Create a static method to get DB instance.
      */
     public static DBConnection getInstance() {
         if (dbConnection == null) {

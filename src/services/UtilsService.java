@@ -8,10 +8,17 @@ import com.opencsv.CSVWriter;
 
 import src.database.DBConnection;
 
+/** 
+ * Utility Class to perform common functionalities
+ */
+
 public class UtilsService {
     
     private static Connection connection = DBConnection.getInstance().getConnection();
 
+    /**
+     * Reads from database table and exports to a CSV file
+     */
     public static void exportTableToCSVFile(String filename, String tableName) {
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -30,6 +37,9 @@ public class UtilsService {
         }
     }
 
+    /**
+     * Reads from database table and prints records to console screen
+     */
     public static void printTableToScreen(String tableName) {
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -50,6 +60,9 @@ public class UtilsService {
         
     }
 
+    /**
+     * Returns formatted column names using database table headers
+     */
     public static String[] getColumnNames(ResultSet rs){
         String[] columnNames = null;
         try{
@@ -69,6 +82,10 @@ public class UtilsService {
         return columnNames;
     }
 
+    /**
+     * Returns regular typography of hyphenated text
+     * eg: first_name is converted to First Name
+     */
     public static String formatColumnName(String columnName) {
         StringBuilder formatedName = new StringBuilder();
         
@@ -82,7 +99,10 @@ public class UtilsService {
         return formatedName.toString().trim();
     }
 
-    public static float[] getIQR(List<Float> values) {
+    /**
+     * Return the data fence calculated using the inter-quartile range of input float values
+     */
+    public static float[] getIQRFence(List<Float> values) {
         Collections.sort(values);
         int len = values.size();
         

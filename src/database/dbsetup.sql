@@ -1,3 +1,5 @@
+-- initial db schema and tables setup file
+
 -- cd /usr/local/mysql/bin
 -- mysql -u root -p
 

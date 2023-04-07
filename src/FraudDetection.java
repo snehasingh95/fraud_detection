@@ -1,5 +1,4 @@
 package src;
-import java.util.*;
 
 import com.mysql.cj.util.StringUtils;
 
@@ -13,6 +12,8 @@ public class FraudDetection {
 
     private static DBConnection dbConnection;
     private static Connection connection;
+
+    private final static String FILE_PATH = "output/";
 
     public static void main(String args[]) {
         System.out.println("\n" + "#".repeat(100));
@@ -83,11 +84,15 @@ public class FraudDetection {
     }
 
     private static void printFrauds() {
-        // System.out.println("\nPrinting Fraud Transactions...");   
+        // System.out.println("\nPrinting Fraud Transactions...");  
         for(RULE r:RULE.values()){
             if(!StringUtils.isEmptyOrWhitespaceOnly(r.getTableName())){
-                System.out.println("\n"+"#".repeat(30)+" Fraud Transactions according to " + r.getName() + " "+"#".repeat(30));
-                UtilsService.exportTableToFile(r.getTableName()+".csv", r.getTableName());
+                System.out.println("\n"+"#".repeat(30)
+                                    + " Fraud Transactions according to " + r.getName() 
+                                    + " "+"#".repeat(30));
+
+                UtilsService.exportTableToCSVFile(FILE_PATH + r.getTableName()+".csv", 
+                                                    r.getTableName());
                 UtilsService.printTableToScreen(r.getTableName());
             }
         }

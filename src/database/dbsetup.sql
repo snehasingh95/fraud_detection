@@ -69,8 +69,7 @@ create table transaction_range (
 -- detected frauds according to rule 1
 -- abnormally high transactions in a customers’ spending.
 create table abnormal_amount_frauds (
-    first_name                      VARCHAR(20) NOT NULL, 
-    last_name                       VARCHAR(20), 
+    customer_name                   VARCHAR(40) NOT NULL, 
     account_number                  INT(5) NOT NULL, 
     transaction_number              INT(5) NOT NULL, 
     merchant_number                 VARCHAR(30) NOT NULL,
@@ -86,8 +85,7 @@ create table abnormal_amount_frauds (
 -- customer transactions that occurred in a different state 
 -- from the customers’ primary state.
 create table mismatch_state_frauds (
-    first_name                      VARCHAR(20) NOT NULL, 
-    last_name                       VARCHAR(20), 
+    customer_name                   VARCHAR(40) NOT NULL, 
     account_number                  INT(5) NOT NULL, 
     transaction_number              INT(5) NOT NULL, 
     expected_transaction_location   VARCHAR(2) NOT NULL, 

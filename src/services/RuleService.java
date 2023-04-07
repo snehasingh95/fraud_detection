@@ -36,6 +36,7 @@ public class RuleService {
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
         return customerMerchantMap;
     }
@@ -65,14 +66,16 @@ public class RuleService {
             int count=pstmt.executeUpdate();
         }catch(Exception e){
             System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
     }
 
     private static void detectAbnormalTransactions(String tableName) {
         // outliers
         String query = "insert into "+tableName+" "
-                        +"select a.first_name, a.last_name, t.account_number, t.transaction_number, "
-                        +"t.merchant_number, t.merchant_description, t.transaction_amount "
+                        +"select concat(a.first_name, ' ', a.last_name) as customer_name, "
+                        +"t.account_number, t.transaction_number, t.merchant_number, "
+                        +"t.merchant_description, t.transaction_amount "
                         +"from transaction_range r left join transactions t "
                         +"on r.account_number=t.account_number and r.merchant_number = t.merchant_number "
                         +"left join account_info a on t.account_number = a.account_number "
@@ -83,14 +86,15 @@ public class RuleService {
             // System.out.println(count+" frauds found");
         }catch(Exception e){
             System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
     }
 
     public static void applyRule2(String tableName){
         // System.out.println("Applying Rule 2");
         String query = "insert into "+tableName+" "
-                        +"select a.first_name, a.last_name, a.account_number, "
-                        +"t.transaction_number, a.state, t.transaction_state "
+                        +"select concat(a.first_name, ' ', a.last_name) as customer_name, "
+                        +"t.account_number, t.transaction_number, a.state, t.transaction_state "
                         +"from transactions t join account_info a "
                         +"on t.account_number=a.account_number "
                         +"where t.transaction_state <> a.state";
@@ -100,6 +104,7 @@ public class RuleService {
             // System.out.println(count+" frauds found");
         }catch(Exception e){
             System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
     }
 
@@ -126,6 +131,7 @@ public class RuleService {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
     }
 }
